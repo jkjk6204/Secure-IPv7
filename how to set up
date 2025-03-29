@@ -1,0 +1,113 @@
+To run this script on your Ubuntu 18.04 VPS, follow these steps:
+
+1. Update and Install Required Packages
+Before running the script, make sure your VPS has Python and the required packages installed.
+
+Update the package list:
+
+bash
+Copy
+Edit
+sudo apt update
+Install Python 3 and pip (if not already installed):
+
+bash
+Copy
+Edit
+sudo apt install python3 python3-pip
+Install necessary libraries (e.g., cryptography, asyncio):
+
+bash
+Copy
+Edit
+pip3 install cryptography asyncio
+2. Transfer the Python Script to VPS
+You can use SCP (Secure Copy Protocol) to transfer your script from your local machine to the VPS:
+
+From your local machine, run this command to transfer the script:
+
+bash
+Copy
+Edit
+scp "C:\Users\jacob\OneDrive\Desktop\ipv7 ip test 2.py" username@your_vps_ip:/home/username/
+Replace username with your VPS username and your_vps_ip with the actual IP address of your VPS.
+
+Alternatively, you can use FTP or a file manager like FileZilla to upload the script.
+
+3. Run the Script on the VPS
+Once the script is on the VPS:
+
+Log into your VPS via SSH:
+
+bash
+Copy
+Edit
+ssh username@your_vps_ip
+Navigate to the directory where the script is stored (e.g., /home/username).
+
+bash
+Copy
+Edit
+cd /home/username
+Run the script:
+
+bash
+Copy
+Edit
+python3 "ipv7 ip test 2.py"
+This will start the server and client as defined in your script.
+
+4. Firewall Configuration (Optional)
+If your VPS has a firewall enabled (e.g., UFW), you might need to open the port (7777 in this case) to allow incoming UDP traffic:
+
+Allow UDP on port 7777:
+
+bash
+Copy
+Edit
+sudo ufw allow 7777/udp
+Check firewall status:
+
+bash
+Copy
+Edit
+sudo ufw status
+5. Running in Background (Optional)
+If you want to run the script in the background and keep it running after logging out, you can use screen or tmux.
+
+Install screen (if not installed):
+
+bash
+Copy
+Edit
+sudo apt install screen
+Start a new screen session:
+
+bash
+Copy
+Edit
+screen
+Run your Python script:
+
+bash
+Copy
+Edit
+python3 "ipv7 ip test 2.py"
+Detach from the screen session (press Ctrl+A followed by D).
+
+You can later reattach to the screen session using:
+
+bash
+Copy
+Edit
+screen -r
+6. Check Logs (Optional)
+If the script is running as expected, you should see the logs for both the server and the client. You can view logs by checking the terminal output or redirecting the output to a log file.
+
+For example:
+
+bash
+Copy
+Edit
+python3 "ipv7 ip test 2.py" > server_log.txt 2>&1 &
+This will run the script in the background and write the logs to server_log.txt.
